@@ -4,6 +4,7 @@ Pour le mega-djo du 7 décembre 2018
 ## Buts:
 Fabriquer un chapeau geek pour la fête du Nouvel An :-)
 
+![alt text](https://github.com/epfl-dojo/mega-dojo.2018.12/images/melon1.gif "Logo Title Text 1")
 
 
 
@@ -14,4 +15,4 @@ Fabriquer un chapeau geek pour la fête du Nouvel An :-)
 
 
 
-zf181204.1454
+zf181204.1459

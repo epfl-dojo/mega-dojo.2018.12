@@ -1,68 +1,40 @@
 <!DOCTYPE html>
-<!-- code HTML pour piloter les effets des LED RGB -->
-
 <html>
 <head>
-<title>LED RGB zf181205.2048</title>
-<style>
-
-body {
-  font-family: Bitstream Vera Sans, Verdana, Helvetica, Arial, sans-serif;
-  font-size: 12px; 
-  background-color: #dddddd;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-/* this matches 'retina' displays */
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-  body {
-    font-size: 24px;
-  }
-  h1 {
-    font-size: 64px;
-  }
-  h2 {
-    font-size: 48px;
-  }
-}
-
-</style>
+  <title>LED Strip Control</title>
 </head>
+
 <body>
-<meta charset='utf-8'>
-<h1>Contrôle des effets des LED's RGB du chapeau</h1>
+  <h1>LED strip control page</h1>
 
-<a href="/">Home</a>
+  <h2>Choose an effect:</h2>
+  <p>This list effect on <a href="https://nodemcu.readthedocs.io/en/master/en/modules/ws2812-effects/">nodemcu.readthedocs.io/en/modules/ws2812-effects/</a></p>
+  <ul>
+    <li><a href="/?set=effect&effect=blink">Blink</a></li>
+    <li><a href="/?set=effect&effect=gradient">gradient</a></li>
+    <li><a href="/?set=effect&effect=gradient_rgb">gradient_rgb</a></li>
+    <li><a href="/?set=effect&effect=random_color">random_color</a></li>
+    <li><a href="/?set=effect&effect=rainbow">rainbow</a></li>
+    <li><a href="/?set=effect&effect=rainbow_cycle">rainbow_cycle</a></li>
+    <li><a href="/?set=effect&effect=flicker">flicker</a></li>
+    <li><a href="/?set=effect&effect=fire">fire</a></li>
+    <li><a href="/?set=effect&effect=fire_intense">fire_intense</a></li>
+    <li><a href="/?set=effect&effect=halloween">halloween</a></li>
+    <li><a href="/?set=effect&effect=circus_combustus">circus_combustus</a></li>
+    <li><a href="/?set=effect&effect=larson_scanner">larson_scanner</a></li>
+    <li><a href="/?set=effect&effect=color_wipe">color_wipe</a></li>
+    <li><a href="/?set=effect&effect=random_dot">random_dot</a></li>
+    <li><a href="/?set=effect&effect=cycle">cycle</a></li>
+  </ul>
 
-<h2>Start & Stop:</h2>
-<ul>
-<li><a href="/?fonction=start">Start</a></li>
-<li><a href="/?fonction=stop">Stop</a></li>
-</ul>
-
-<h2>Vitesse de l'effet:</h2>
-<ul>
-<li><a href="/?set=speed&speed=inc">Plus vite</a></li>
-<li><a href="/?set=speed&speed=dec">Plus lent</a></li>
-</ul>
-
-<h2>Couleurs des trains:</h2>
-<ul>
-<li><a href="/?set=color&R1=255&G1=255&B1=255&R2=255&G2=255&B2=255">Blanc</a></li>
-<li><a href="/?set=color&R1=255&G1=0&B1=0&R2=255&G2=0&B2=0">Rouge</a></li>
-<li><a href="/?set=color&R1=255&G1=0&B1=0&R2=0&G2=0&B2=255">Brexit</a></li>
-<li><a href="/?set=color&R1=0&G1=255&B1=0&R2=0&G2=255&B2=0">Ecolo</a></li>
-</ul>
-
-<a href="/?restart=1">Restart</a>
+  <h2>Pick a color:</h2>
+  <ul>
+    <li><a href="/?set=color&r=255&g=0&b=0">Red</a></li>
+    <li><a href="/?set=color&r=0&g=255&b=0">Green</a></li>
+    <li><a href="/?set=color&r=0&g=0&b=255">Blue</a></li>
+    <li><a href="/?set=color&r=255&g=255&b=255">White</a></li>
+    <li><a href="/?set=color&r=0&g=0&b=0">Black</a></li>
+  </ul>
 
 </body>
 </html>
-

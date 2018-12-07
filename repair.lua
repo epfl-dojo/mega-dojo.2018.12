@@ -1,16 +1,16 @@
 -- Scripts de seconde chance pour réparer une boucle dans le restart
 
-print("\n repair.lua zf181119.2356 \n")
+print(" → Loading repair.lua\n")
 
---f= "wifi_ap_start.lua"   if file.exists(f) then dofile(f) end
---f= "telnet_srv.lua"   if file.exists(f) then dofile(f) end
+ledcounts=300
 
-f= "az_init_led.lua"   if file.exists(f) then dofile(f) end
+function RGB_clear()
+  ws2812.init()
+  buffer = ws2812.newBuffer(ledcounts, 3)
+  buffer:fill(0, 0, 0)
+  ws2812.write(buffer)
+end
 
-
---[[
-jobtimer1=tmr.create()
-tmr.alarm(jobtimer1, 5*1000,  tmr.ALARM_AUTO, function()
-    print("repair...")
-end)
-]]
+print("Initializing LED strip...")
+RGB_clear()
+print("   ...done")

@@ -1,14 +1,14 @@
--- Petit script pour connecter le NodeMCU sur un AP Wifi avec l'accompte sauvé en EEPROM
-print("\n wifi_cli_start.lua   zf181119.2359   \n")
+-- This connect the NodeMCU to an WIFI AP
+print(" → Loading wifi_cli_start.lua\n")
 
-local zmodewifi=wifi.getmode()
-if zmodewifi == wifi.NULLMODE then
-    print("WIFI mode CLI only")
-    wifi.setmode(wifi.STATION)
-elseif zmodewifi == wifi.SOFTAP then
-    print("WIFI mode AP+CLI")
-    wifi.setmode(wifi.STATIONAP)
+local myWifiMode=wifi.getmode()
+if myWifiMode == wifi.NULLMODE then
+  print("  WIFI: mode STATION only")
+  wifi.setmode(wifi.STATION)
+elseif myWifiMode == wifi.SOFTAP then
+  print("  WIFI: mode STATION AP")
+  wifi.setmode(wifi.STATIONAP)
 end
 wifi.sta.autoconnect(1)
 wifi.sta.connect()
-f= "wifi_get_ip.lua"   if file.exists(f) then dofile(f) end
+f= "wifi_get_ip.lua" if file.exists(f) then dofile(f) end

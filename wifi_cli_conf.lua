@@ -1,12 +1,8 @@
--- Petit script pour configurer le client WIFI du NodeMCU
+-- This configure the WIFI client
 
-print("\n wifi_cli_conf.lua   zf181205.1931   \n")
+print(" → Loading wifi_cli_conf.lua\n")
 
---credentials par défaut
-cli_ssid="3g-s7"
-cli_pwd="12234567"
-
---ses propre credentials
-f= "credentials.lua"    if file.exists(f) then dofile(f) end
+cli_ssid="KeyloRenIsShirtLess"
+cli_pwd="ponsfrilus"
 
 wifi.sta.config{ssid=cli_ssid, pwd=cli_pwd, save=true}

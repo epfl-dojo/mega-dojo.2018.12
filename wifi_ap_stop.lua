@@ -1,10 +1,11 @@
--- Démarre le WIFI en mode AP
-print("\n wifi_ap_stop.lua   zf180824.2000   \n")
+-- Start WIFI in AP mode
+print(" → Loading wifi_ap_stop.lua\n")
 
-local zmodewifi=wifi.getmode()
-if zmodewifi == wifi.SOFTAP then
-    wifi.setmode(wifi.NULLMODE)
-elseif zmodewifi == wifi.STATIONAP then
-    wifi.setmode(wifi.STATION)
+local myWifiMode=wifi.getmode()
+if myWifiMode == wifi.SOFTAP then
+  wifi.setmode(wifi.NULLMODE)
+  print(" ...WIFI AP stopped")
+elseif myWifiMode == wifi.STATIONAP then
+  wifi.setmode(wifi.STATION)
+  print(" ...WIFI AP stopped")
 end
-print("WIFI AP arrêté")

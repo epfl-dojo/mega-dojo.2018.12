@@ -1,1 +1,1 @@
-# A small NodeMCU web server to control WS2813 led stip
+# A small NodeMCU web server to control WS2813 led strip

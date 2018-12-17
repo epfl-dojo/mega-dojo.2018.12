@@ -39,11 +39,15 @@ goconsole() {
 }
 
 goupload() {
-  $CMD upload --verify=raw $f
+  for f in $* ; do
+    $CMD upload --verify=raw $f
+  done
 }
 
 godownload() {
-  $CMD download --verify=raw $f 
+  for f in $* ; do 
+    $CMD download --verify=raw $*
+  done
 }
 
 gols() {
@@ -51,7 +55,9 @@ gols() {
 }
 
 gorm() {
-  $CMD file remove $*
+  for f in $* ; do
+    $CMD file remove $*
+  done
 }
 
 gorun() {
@@ -75,7 +81,7 @@ gorestart() {
   $CMD node restart
 }
 
-gpformat() {
+goformat() {
   $CMD file format
 }
 

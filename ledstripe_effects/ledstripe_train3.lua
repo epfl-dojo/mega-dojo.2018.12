@@ -49,7 +49,7 @@ local function train_shift()
 end
 
 local function setup()
-    if myLedStrip1 == nil
+    if myLedStrip1 == nil then
         myLedStrip1 = ws2812.newBuffer(nbleds, 3) 
         myLedStrip1 = ws2812.newBuffer(nbleds, 3) 
         train1_fill()
@@ -65,7 +65,7 @@ local function start()
     tmr.alarm(train3timer1, train_speed,  tmr.ALARM_AUTO, function()
         train_shift()
         train_mix()
-        train_write()
+        ledstripe_write()
     end)
 end
 
@@ -88,7 +88,7 @@ local function update(_GET)
         else
             train_speed=train_speed*1.2
         end
-        train_start()
+        start()
     end    
  
     if (_GET.set == "color") then
@@ -104,8 +104,9 @@ end
 
 -- Register this effect in the list of effects ------------------------
 
+local DEMO_NAME="train3"
 LEDSTRIPE_EFFECTS[DEMO_NAME] = {
-  name  = "giovanni1",
+  name  = function() return DEMO_NAME end,
   start = function() start() end,
   stop  = function() stop()  end,
   pause = function() pause()  end,

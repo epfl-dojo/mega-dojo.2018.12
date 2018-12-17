@@ -14,24 +14,27 @@ local function send_file(client, filename)
       if line then
         client:send(line)
       end
-    until not line    
+    until not line
     file.close()
   end
 end
 
 local function render(client)
     send_file(client, 'header.html')
-    if LEDSTRIPE_CURRENT != nil then
-        local n = LEDSTRIPE_CURRENT:name
-        local f = "ledstripe_" .. n .. ".html"
+    if LEDSTRIPE_CURRENT ~= nil then
+        n = LEDSTRIPE_CURRENT:name()
+        f = "ledstripe_" .. n .. ".html"
         client:send("<h2>Current Effect is " .. n)
-        if (file.exists(f)) send_file(client, f)
+        if (file.exists(ff)) then 
+            send_file(client, f)
+        end
     end
     client:send("<h2>Available Effects</h2>")
     client:send("<ul>")
     for name, effect in pairs(LEDSTRIPE_EFFECTS) do
         client:send("<li><a href='/?fonction=select&name="..name.."'>"..name.."</a></li>")
     end
+    send_file(client, 'footer.html')
 end
 
 local function on_receive(client, request)
@@ -66,12 +69,8 @@ local function on_receive(client, request)
         ledstripe_update(_GET)
     end
 
-
-
-
-    if (_GET.set == "giova") then
-        print("Calling giovanni_web")
-        giovanni_web(_GET)
+    if (_GET.fonction == "select") then
+        ledstripe_set(_GET.name)
     end
 
     if (_GET.restart == "1") then

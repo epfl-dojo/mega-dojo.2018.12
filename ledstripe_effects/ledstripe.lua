@@ -26,13 +26,13 @@ function ledstripe_list()
 end
 
 function ledstripe_set(effect_name)
-  if LEDSTRIPE_EFFECTS[effect_name] ~= nil
-    if LEDSTRIPE_CURRENT != nil then
+  if LEDSTRIPE_EFFECTS[effect_name] ~= nil then
+    if LEDSTRIPE_CURRENT ~= nil then
       LEDSTRIPE_CURRENT:stop()
     end
-      LEDSTRIPE_CURRENT = LEDSTRIPE_EFFECTS[effect_name]
-      LEDSTRIPE_CURRENT:start()
-    end
+    LEDSTRIPE_CURRENT = LEDSTRIPE_EFFECTS[effect_name]
+    -- delay start() as it might take some time
+    tmr.create():alarm(500, tmr.ALARM_SINGLE, function() LEDSTRIPE_CURRENT:start() end)
   else
     print("Effect with name '" .. effect_name .. "' is NOT available")
   end
@@ -40,7 +40,7 @@ end
 
 -- start current effect
 function ledstripe_resume()
-  if LEDSTRIPE_CURRENT != nil then
+  if LEDSTRIPE_CURRENT ~= nil then
     CURRENT_EFFECT.start()
   else
     print("No effect to resume")
@@ -48,7 +48,7 @@ function ledstripe_resume()
 end
 
 function ledstripe_pause()
-  if LEDSTRIPE_CURRENT != nil then
+  if LEDSTRIPE_CURRENT ~= nil then
     CURRENT_EFFECT.stop()
   else
     print("No effect to pause")
@@ -56,7 +56,7 @@ function ledstripe_pause()
 end
 
 function ledstripe_update(_GET)
-  if LEDSTRIPE_CURRENT != nil then
+  if LEDSTRIPE_CURRENT ~= nil then
     CURRENT_EFFECT.update(_GET)
   else
     print("No effect to update")
@@ -78,10 +78,19 @@ ws2812.init()
 LEDSTRIPE_CURRENT = nil
 LEDSTRIPE_EFFECTS = {}
 
-for f in file.list("ledstripe_.*%.lua") do
+for f,s in pairs(file.list("ledstripe_.*%.lua")) do
+  print("Loading ledstripe effect ", f)
   if file.exists(f) then 
-    dofile(f)
+     dofile(f)
   end
 end
+
+for name, effect in pairs(LEDSTRIPE_EFFECTS) do
+  -- print(name)
+  print(effect:name())
+end
+
+
+
 
 ledstripe_set("giovanni1")

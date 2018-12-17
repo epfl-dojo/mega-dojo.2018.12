@@ -44,7 +44,7 @@ local function animate_star()
     b = math.floor(b * f)
     LEDSTRIPE:set(i, r, g, b)
   end
-  write_to_stripe()
+  ledstripe_write()
 end
 
 -- API functions ------------------------------------------------------
@@ -115,9 +115,9 @@ local function update(g)
 end
 
 -- Register this effect in the list of effects ------------------------
-
+local DEMO_NAME="giovanni1"
 LEDSTRIPE_EFFECTS[DEMO_NAME] = {
-  name  = "giovanni1",
+  name  = function() return DEMO_NAME end,
   start = function() start() end,
   stop  = function() stop()  end,
   pause = function() pause()  end,

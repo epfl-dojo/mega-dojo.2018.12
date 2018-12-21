@@ -4,8 +4,8 @@ print("\n giovanni.lua gc181214.1907 \n")
 
 local NBLEDS=LEDSTRIPE:size()
 
-local ADDSTAR_RATE=50
-local ANIMATE_RATE=100
+local ADDSTAR_RATE=200
+local ANIMATE_RATE=300
 local FADE_MIN=0.5
 local FADE_MAX=0.8
 local INT_AVE=180

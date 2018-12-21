@@ -23,7 +23,7 @@ local function render(client)
     send_file(client, 'header.html')
     if LEDSTRIPE_CURRENT ~= nil then
         n = LEDSTRIPE_CURRENT:name()
-        f = "ledstripe_" .. n .. ".html"
+        f = "effect_" .. n .. ".html"
         client:send("<h2>Current Effect is " .. n)
         if (file.exists(ff)) then 
             send_file(client, f)
@@ -88,10 +88,10 @@ local function on_sent(c)
     c:close()
 end
 
-
--- web server
-srv = net.createServer(net.TCP)
-srv:listen(80, function(conn)
-    conn:on("receive", on_receive)
-    conn:on("sent", on_sent)
-end)
+local function boot_webleds()
+    local srv = net.createServer(net.TCP)
+    srv:listen(80, function(conn)
+        conn:on("receive", on_receive)
+        conn:on("sent", on_sent)
+    end)
+end

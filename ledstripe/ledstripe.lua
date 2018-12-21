@@ -78,19 +78,18 @@ ws2812.init()
 LEDSTRIPE_CURRENT = nil
 LEDSTRIPE_EFFECTS = {}
 
-for f,s in pairs(file.list("ledstripe_.*%.lua")) do
+for f,s in pairs(file.list("effect_.*%.lua")) do
   print("Loading ledstripe effect ", f)
   if file.exists(f) then 
      dofile(f)
   end
 end
 
+print("Loaded ledstripe effects:")
 for name, effect in pairs(LEDSTRIPE_EFFECTS) do
-  -- print(name)
   print(effect:name())
 end
 
 
 
 
-ledstripe_set("giovanni1")
